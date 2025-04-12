@@ -14,11 +14,11 @@ Phone number in case we have any questions
 >
 <label>
     Item Ordered:
-    <textarea name="Item Ordered"></textarea>
+    <textarea name="Item"></textarea>
   </label><br>  
 <label>
     Size Ordered:
-    <textarea name="Size Ordered"></textarea>
+    <textarea name="Size"></textarea>
   </label><br>
 <label>
     Quantity Ordered:
@@ -38,5 +38,20 @@ Phone number in case we have any questions
   </label><br>
   <button type="submit">Send</button>
 </form>
+
+<script>
+  // Grab query parameters from the URL
+  const params = new URLSearchParams(window.location.search);
+
+  // Prefill the form fields
+  document.addEventListener("DOMContentLoaded", () => {
+    if (params.has('item')) {
+      document.querySelector('[name="item"]').value = params.get('item');
+    }
+    if (params.has('size')) {
+      document.querySelector('[name="size"]').value = params.get('size');
+    }
+  });
+</script>
 
 
