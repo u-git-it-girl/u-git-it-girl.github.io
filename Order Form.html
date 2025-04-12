@@ -43,16 +43,14 @@ Phone number in case we have any questions
 </form>
 
 <script>
-  // Grab query parameters from the URL
   const params = new URLSearchParams(window.location.search);
 
-  // Prefill the form fields
   document.addEventListener("DOMContentLoaded", () => {
-    if (params.has('item')) {
-      document.querySelector('[name="item"]').value = params.get('item');
+    if (params.has('Item')) {
+      document.querySelector('[name="Item"]').value = params.get('Item');
     }
-    if (params.has('size')) {
-      document.querySelector('[name="size"]').value = params.get('size');
+    if (params.has('Size')) {
+      document.querySelector('[name="Size"]').value = params.get('Size');
     }
   });
 </script>
