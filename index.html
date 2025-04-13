@@ -1,76 +1,240 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    .logo {
+      display: block;
+      margin: 0 auto 10px;
+      max-width: 300px;
+    }
+
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .product-card {
+      flex: 0 1 calc(33.333% - 40px);
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      .product-card {
+        flex: 0 1 calc(50% - 40px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .product-card {
+        flex: 0 1 100%;
+      }
+    }
+  </style>
+</head>
 <body>
-<img src="Logo-Medium.png" alt= "Two Bros and Co Logo">
+
+<img src="Logo-Medium.png" alt="Two Bros and Co Logo" class="logo">
 <h2><i>A business brought to you by Owen and Freddie</i></h2>
 <h2>Bracelets for Sale!</h2>
-<p>Rainbow | Size: Adult Small | Quantity Available: 2 | $0.50 <button onclick="window.open('Order Form.html?Item=Rainbow&Size=Adult%20Small', '_blank');">
-  Order for Pickup </button> </p>
-<p>Rainbow | Size: Adult Medium | Quantity Available: 1 | $0.50 <button onclick="window.open('Order Form.html?Item=Rainbow&Size=Adult%20Medium', '_blank');">
-  Order for Pickup </button></p>
-<img src="Bracelet Rainbow AS.jpg" alt="Rainbow">
-<p>Tropical Punch | Size: Adult Small | Quantity Available: 1 | $0.50 </p>
-<p>Tropical Punch | Size: Adult XL | Quantity Available: 1 | $0.75 </p>
-<img src="Tropical Punch AS.jpg" alt="Tropical Punch">
-<p>Citrus | Size: Kid XS | Quantity Available: 1 | $0.50 </p>
-<img src="Citrus.jpg" alt="Citrus">
-<p>Watermelon | Size: Kid XS | Quantity Available: 1 | $0.50 </p>
-<p>Watermelon | Size: Kid Small | Quantity Available: 1 | $0.50 </p>
-<img src="Watermelon.jpg" alt="Watermelon">
-<p>Blueser | Size: Adult Small | Quantity Available: 1 | $0.50 </p>
-<img src="Blueser.jpg" alt="Blueser">
-<p>LadyBug | Size: Kid Large | Quantity Available: 1 | $0.50 </p>
-<img src="LadyBug.jpg" alt="LadyBug">
-<p>Flower | Size: Kid XS | Quantity Available: 1 | $0.50 </p>
-<img src="Flower.jpg" alt="Flower">
-<p>Spooky | Size: Kid Small | Quantity Available: 1 | $0.50 </p>
-<img src="Spooky.jpg" alt="Spooky">
-<p>Thunder and Lightning | Size: Adult Small | Quantity Available: 1 | $0.50 </p>
-<img src="Thunder and Lightning.jpg" alt="Thunder and Lightning">
-<p>Carnival | Size: Kid Small | Quantity Available: 1 | $0.50 </p>
-<img src="Carnival.jpg" alt="Carnival">
-<p>Green Thunder | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Green Thunder.jpg" alt="Green Thunder">
-<p>French | Size: Kid XS | Quantity Available: 1 | $0.50 </p>
-<img src="French.jpg" alt="French">
-<p>Blue Punch | Size: Kid Small | Quantity Available: 1 | $0.50 </p>
-<img src="blue punch.jpg" alt="Blue Punch">
-<p>Fighter | Size: Kid XS | Quantity Available: 1 | $0.75 </p>
-<img src="fighter.jpg" alt="fighter">
-<p>Sunset | Size: Adult Large  | Quantity Available: 1 | $0.75 </p>
-<img src="sunset.jpg" alt="Sunset">
-<p>Tropical Fish | Size: Kid XS  | Quantity Available: 1 | $0.50 </p>
-<img src="Tropical Fish.jpg" alt="Tropical Fish">
-<p>Scary Pumpkin | Size: Kid Large | Quantity Available: 1 | $0.50 </p>
-<img src="Scary Pumpkin.jpg" alt="Scary Pumpkin">
-<p>Valentine | Size: Kid Small | Quantity Available: 1 | $0.50 </p>
-<p>Valentine | Size: Adult Small | Quantity Available: 1 | $0.50 </p>
-<img src="Valentine.jpg" alt="Valentine">
-<p>Viking | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Viking.jpg" alt="Viking">
-<p>Easter | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Easter.jpg" alt="Easter">
-<p>Red Hot | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Red Hot.jpg" alt="Red Hot">
-<p>Raddish | Size: Kid small | Quantity Available: 1 | $0.50 </p>
-<img src="Raddish.jpg" alt="Raddish">
-<p>Spring | Size: Kid large | Quantity Available: 1 | $0.50 </p>
-<img src="Spring.jpg" alt="Spring">
-<p>Mario | Size: Kid large | Quantity Available: 1 | $0.50 </p>
-<img src="Mario.jpg" alt="Mario">
-<p>Blue Tiger | Size: Kid large | Quantity Available: 1 | $0.50 </p>
-<img src="Blue Tiger.jpg" alt="Blue Tiger">
-<p>Race Car | Size: Kid large | Quantity Available: 1 | $0.50 </p>
-<img src="Race Car.jpg" alt="Race Car">
-<p>Princess | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Princess.jpg" alt="Princess">
-<p>Orange | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Orange.jpg" alt="Orange">
-<p>Blue All Around | Size: Adult Small | Quantity Available: 1 | $0.50 </p>
-<img src="Blue All Around.jpg" alt="Blue All Around">
-<p>Chili Pepper | Size: Kid Small | Quantity Available: 1 | $0.50 </p>
-<img src="Chili Pepper.jpg" alt="Chili Pepper">
-<p>Sunrise  | Size: Kid Medium | Quantity Available: 1 | $0.50 </p>
-<img src="Sunrise.jpg" alt="Sunrise">
+
+<div class="product-grid">
+
+  <div class="product-card">
+    <img src="Bracelet Rainbow AS.jpg" alt="Rainbow">
+    <p>Rainbow | Size: Adult Small | Quantity: 2 | $0.50</p>
+    <button onclick="window.open('Order Form.html?Item=Rainbow&Size=Adult%20Small', '_blank');">Order for Pickup</button>
+  </div>
+
+  <div class="product-card">
+    <img src="Bracelet Rainbow AS.jpg" alt="Rainbow">
+    <p>Rainbow | Size: Adult Medium | Quantity: 1 | $0.50</p>
+    <button onclick="window.open('Order Form.html?Item=Rainbow&Size=Adult%20Medium', '_blank');">Order for Pickup</button>
+  </div>
+
+  <div class="product-card">
+    <img src="Tropical Punch AS.jpg" alt="Tropical Punch">
+    <p>Tropical Punch | Size: Adult Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Tropical Punch AS.jpg" alt="Tropical Punch">
+    <p>Tropical Punch | Size: Adult XL | Quantity: 1 | $0.75</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Citrus.jpg" alt="Citrus">
+    <p>Citrus | Size: Kid XS | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Watermelon.jpg" alt="Watermelon">
+    <p>Watermelon | Size: Kid XS | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Watermelon.jpg" alt="Watermelon">
+    <p>Watermelon | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Blueser.jpg" alt="Blueser">
+    <p>Blueser | Size: Adult Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="LadyBug.jpg" alt="LadyBug">
+    <p>LadyBug | Size: Kid Large | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Flower.jpg" alt="Flower">
+    <p>Flower | Size: Kid XS | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Spooky.jpg" alt="Spooky">
+    <p>Spooky | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Thunder and Lightning.jpg" alt="Thunder and Lightning">
+    <p>Thunder and Lightning | Size: Adult Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Carnival.jpg" alt="Carnival">
+    <p>Carnival | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Green Thunder.jpg" alt="Green Thunder">
+    <p>Green Thunder | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="French.jpg" alt="French">
+    <p>French | Size: Kid XS | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="blue punch.jpg" alt="Blue Punch">
+    <p>Blue Punch | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="fighter.jpg" alt="Fighter">
+    <p>Fighter | Size: Kid XS | Quantity: 1 | $0.75</p>
+  </div>
+
+  <div class="product-card">
+    <img src="sunset.jpg" alt="Sunset">
+    <p>Sunset | Size: Adult Large | Quantity: 1 | $0.75</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Tropical Fish.jpg" alt="Tropical Fish">
+    <p>Tropical Fish | Size: Kid XS | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Scary Pumpkin.jpg" alt="Scary Pumpkin">
+    <p>Scary Pumpkin | Size: Kid Large | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Valentine.jpg" alt="Valentine">
+    <p>Valentine | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Valentine.jpg" alt="Valentine">
+    <p>Valentine | Size: Adult Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Viking.jpg" alt="Viking">
+    <p>Viking | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Easter.jpg" alt="Easter">
+    <p>Easter | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Red Hot.jpg" alt="Red Hot">
+    <p>Red Hot | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Raddish.jpg" alt="Raddish">
+    <p>Raddish | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Spring.jpg" alt="Spring">
+    <p>Spring | Size: Kid Large | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Mario.jpg" alt="Mario">
+    <p>Mario | Size: Kid Large | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Blue Tiger.jpg" alt="Blue Tiger">
+    <p>Blue Tiger | Size: Kid Large | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Race Car.jpg" alt="Race Car">
+    <p>Race Car | Size: Kid Large | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Princess.jpg" alt="Princess">
+    <p>Princess | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Orange.jpg" alt="Orange">
+    <p>Orange | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Blue All Around.jpg" alt="Blue All Around">
+    <p>Blue All Around | Size: Adult Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Chili Pepper.jpg" alt="Chili Pepper">
+    <p>Chili Pepper | Size: Kid Small | Quantity: 1 | $0.50</p>
+  </div>
+
+  <div class="product-card">
+    <img src="Sunrise.jpg" alt="Sunrise">
+    <p>Sunrise | Size: Kid Medium | Quantity: 1 | $0.50</p>
+  </div>
+
+</div>
+
 </body>
 </html>
