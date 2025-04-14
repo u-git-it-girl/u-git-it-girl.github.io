@@ -88,9 +88,7 @@
   font-size: 16px;
   cursor: pointer;
 }
-.sticky-checkout button:hover {
-  background-color: #0056b3;
-}
+
   </style>
 </head>
 <body>
@@ -162,34 +160,41 @@
     { image: "Castle.jpg", alt: "Castle", description: "Castle | Size: Kid XS | $0.50" }
   ];
 
-  const cart = [];
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-  const productList = document.getElementById('product-list');
+const productList = document.getElementById('product-list');
   products.forEach((product, index) => {
     const card = document.createElement('div');
     card.className = 'product-card';
+
+    const inCart = cart.includes(product.description);
+    const btnClass = inCart ? 'add-to-cart-btn in-cart' : 'add-to-cart-btn';
+    const btnText = inCart ? 'In Cart' : 'Add to Cart';
+    const btnDisabled = inCart ? 'disabled' : '';
+
     card.innerHTML = `
       <img src="${product.image}" alt="${product.alt}">
       <p>${product.description}</p>
-      <button class="add-to-cart-btn" onclick="addToCart('${product.description}', this)">Add to Cart</button>
+      <button class="${btnClass}" ${btnDisabled} onclick="addToCart('${product.description}', this)">${btnText}</button>
     `;
+
     productList.appendChild(card);
   });
 
-  function addToCart(description, button) {
-    if (!cart.includes(description)) {
-      cart.push(description);
-      button.textContent = 'In Cart';
-      button.classList.add('in-cart');
-      button.disabled = true;
-      alert('Added to cart!');
-      console.log(cart);
-    }
+function addToCart(description, button) {
+  if (!cart.includes(description)) {
+    cart.push(description);
+    localStorage.setItem('cart', JSON.stringify(cart)); // <- Save it immediately
+    button.textContent = 'In Cart';
+    button.classList.add('in-cart');
+    button.disabled = true;
+    alert('Added to cart!');
+    console.log(cart);
   }
+}
 </script> 
 
 <script>  
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 function goToCheckout() {
     if (cart.length === 0) {
