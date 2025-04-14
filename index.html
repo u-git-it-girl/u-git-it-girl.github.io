@@ -109,7 +109,7 @@
   <!-- Product cards will be inserted here -->
 </div>
 
-<button onclick="goToCheckout()" style="margin: 40px auto; display: block;">
+<button id="checkoutbutton" onclick="goToCheckout()" style="margin: 40px auto; display: block;">
   Checkout
 </button>
 <button id="clearCartButton">Clear Cart</button>
@@ -187,9 +187,7 @@
   }
 </script> 
 
-<script>
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
+<script>  
 function goToCheckout() {
     if (cart.length === 0) {
       alert("Your cart is empty!");
