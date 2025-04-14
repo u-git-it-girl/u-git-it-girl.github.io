@@ -38,26 +38,79 @@
       font-weight: bold;
       margin-left: 10px;
     }
+    .form-section {
+      background: white;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .form-section label {
+      display: block;
+      margin-top: 15px;
+    }
+    .form-section input, .form-section textarea, .form-section select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    #grand-total {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .submit-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <h1>Your Order</h1>
   <div id="order-list"></div>
+  <div id="grand-total">Grand Total: $0.00</div>
+
+  <div class="form-section">
+    <h2>Pickup Info</h2>
+    <label>Your Name:
+      <input type="text" name="name" required>
+    </label>
+    <label>Your Email:
+      <input type="email" name="email" required>
+    </label>
+    <label>Pickup Location:
+      <input type="text" name="location" required>
+    </label>
+    <label>Desired Pickup Time:
+      <input type="text" name="pickup-time">
+    </label>
+    <label>Questions/Comments:
+      <textarea name="comments" rows="4"></textarea>
+    </label>
+    <button class="submit-button">Submit Order</button>
+  </div>
 
   <script>
-
     const allProducts = [
-      // Use the same product array as on your product page
       { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Small | $0.50" },
       { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Medium | $0.50" },
       { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult Small | $0.50" },
       { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult XL | $0.75" },
-      { image: "Citrus.jpg", alt: "Citrus", description: "Citrus | Size: Kid XS | $0.50" },
-      // ... (You can paste the rest of your product list here)
+      { image: "Citrus.jpg", alt: "Citrus", description: "Citrus | Size: Kid XS | $0.50" }
+      // (Add remaining products here as needed)
     ];
 
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const container = document.getElementById('order-list');
+    let grandTotal = 0;
 
     cart.forEach(description => {
       const product = allProducts.find(p => p.description === description);
@@ -89,17 +142,28 @@
       `;
 
       container.appendChild(itemDiv);
+      grandTotal += price;
     });
+
+    updateGrandTotal();
 
     function updateTotal(input, price) {
       const quantity = parseInt(input.value) || 1;
       const totalEl = input.closest('p').querySelector('.total');
       const total = (quantity * price).toFixed(2);
       totalEl.textContent = `Total: $${total}`;
+      updateGrandTotal();
+    }
+
+    function updateGrandTotal() {
+      const totalElements = document.querySelectorAll('.total');
+      let grand = 0;
+      totalElements.forEach(el => {
+        const value = parseFloat(el.textContent.replace('Total: $', ''));
+        grand += value;
+      });
+      document.getElementById('grand-total').textContent = `Grand Total: $${grand.toFixed(2)}`;
     }
   </script>
-
 </body>
 </html>
-
-
