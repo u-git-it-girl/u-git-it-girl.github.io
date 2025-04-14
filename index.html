@@ -189,6 +189,8 @@
 </script> 
 
 <script>  
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
 function goToCheckout() {
     if (cart.length === 0) {
       alert("Your cart is empty!");
