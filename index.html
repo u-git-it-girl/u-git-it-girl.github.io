@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -33,11 +35,26 @@
       padding: 15px;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       text-align: center;
+      display: inline-block;
     }
 
     .product-card img {
       max-width: 300px;
       border-radius: 8px;
+      height: auto;
+    }
+
+    .add-to-cart-btn {
+      margin-top: 5px;
+      padding: 5px 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .add-to-cart-btn.in-cart {
+      background-color: #6c757d;
     }
 
     @media (max-width: 768px) {
@@ -51,6 +68,30 @@
         flex: 0 1 100%;
       }
     }
+
+.sticky-checkout {
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9; /* Match your page background */
+  padding: 10px;
+  text-align: center;
+  z-index: 1000;
+  border-bottom: 1px solid #ddd;
+}
+
+.sticky-checkout button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sticky-checkout button:hover {
+  background-color: #0056b3;
+}
   </style>
 </head>
 <body>
@@ -58,227 +99,109 @@
 <img src="Logo-Medium.png" alt="Two Bros and Co Logo" class="logo">
 <h2><i>A business brought to you by Owen and Freddie</i></h2>
 <h2>Bracelets for Sale!</h2>
+<div class="sticky-checkout">
+  <button onclick="goToCheckout()">
+    Checkout
+  </button>
+</div>
 
 <div class="product-grid">
 
-  <div class="product-card">
-    <img src="Bracelet Rainbow AS.jpg" alt="Rainbow">
-    <p>Rainbow | Size: Adult Small | $0.50</p>
-    <button onclick="window.open('Order Form.html?Item=Rainbow&Size=Adult%20Small', '_blank');">Order for Pickup</button>
-  </div>
-
-  <div class="product-card">
-    <img src="Bracelet Rainbow AS.jpg" alt="Rainbow">
-    <p>Rainbow | Size: Adult Medium | $0.50</p>
-    <button onclick="window.open('Order Form.html?Item=Rainbow&Size=Adult%20Medium', '_blank');">Order for Pickup</button>
-  </div>
-
-  <div class="product-card">
-    <img src="Tropical Punch AS.jpg" alt="Tropical Punch">
-    <p>Tropical Punch | Size: Adult Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Tropical Punch AS.jpg" alt="Tropical Punch">
-    <p>Tropical Punch | Size: Adult XL | $0.75</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Citrus.jpg" alt="Citrus">
-    <p>Citrus | Size: Kid XS | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Watermelon.jpg" alt="Watermelon">
-    <p>Watermelon | Size: Kid XS | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Watermelon.jpg" alt="Watermelon">
-    <p>Watermelon | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Blueser.jpg" alt="Blueser">
-    <p>Blueser | Size: Adult Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="LadyBug.jpg" alt="LadyBug">
-    <p>LadyBug | Size: Kid Large | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Flower.jpg" alt="Flower">
-    <p>Flower | Size: Kid XS | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Spooky.jpg" alt="Spooky">
-    <p>Spooky | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Thunder and Lightning.jpg" alt="Thunder and Lightning">
-    <p>Thunder and Lightning | Size: Adult Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Carnival.jpg" alt="Carnival">
-    <p>Carnival | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Green Thunder.jpg" alt="Green Thunder">
-    <p>Green Thunder | Size: Kid Medium | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="French.jpg" alt="French">
-    <p>French | Size: Kid XS | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="blue punch.jpg" alt="Blue Punch">
-    <p>Blue Punch | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="fighter.jpg" alt="Fighter">
-    <p>Fighter | Size: Kid XS | $0.75</p>
-  </div>
-
-  <div class="product-card">
-    <img src="sunset.jpg" alt="Sunset">
-    <p>Sunset | Size: Adult Large | $0.75</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Tropical Fish.jpg" alt="Tropical Fish">
-    <p>Tropical Fish | Size: Kid XS | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Scary Pumpkin.jpg" alt="Scary Pumpkin">
-    <p>Scary Pumpkin | Size: Kid Large | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Valentine.jpg" alt="Valentine">
-    <p>Valentine | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Valentine.jpg" alt="Valentine">
-    <p>Valentine | Size: Adult Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Viking.jpg" alt="Viking">
-    <p>Viking | Size: Kid Medium | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Easter.jpg" alt="Easter">
-    <p>Easter | Size: Kid Medium | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Red Hot.jpg" alt="Red Hot">
-    <p>Red Hot | Size: Kid Medium | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Raddish.jpg" alt="Raddish">
-    <p>Raddish | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Spring.jpg" alt="Spring">
-    <p>Spring | Size: Kid Large | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Mario.jpg" alt="Mario">
-    <p>Mario | Size: Kid Large | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Blue Tiger.jpg" alt="Blue Tiger">
-    <p>Blue Tiger | Size: Kid Large | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Race Car.jpg" alt="Race Car">
-    <p>Race Car | Size: Kid Large | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Princess.jpg" alt="Princess">
-    <p>Princess | Size: Kid Medium | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Orange.jpg" alt="Orange">
-    <p>Orange | Size: Kid Medium | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Blue All Around.jpg" alt="Blue All Around">
-    <p>Blue All Around | Size: Adult Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Chili Pepper.jpg" alt="Chili Pepper">
-    <p>Chili Pepper | Size: Kid Small | $0.50</p>
-  </div>
-
-  <div class="product-card">
-    <img src="Sunrise.jpg" alt="Sunrise">
-    <p>Sunrise | Size: Kid Medium | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Jet.jpg" alt="Jet">
-    <p>Jet | Size: Kid Medium | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Pink Tiger.jpg" alt="Pink Tiger">
-    <p>Pink Tiger | Size: Kid Large | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Neon.jpg" alt="Neon">
-    <p>Neon | Size: Kid Large | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Electric.jpg" alt="Electric">
-    <p>Electric | Size: Kid small | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Azalea.jpg" alt="Azalea">
-    <p>Azalea | Size: Kid XS | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Cool Runner.jpg" alt="Cool Runner">
-    <p>Cool Runner | Size: Kid XS | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Scarecrow.jpg" alt="SCarecrow">
-    <p>Scarecrow | Size: Kid XS | $0.50</p>
-  </div>
-
-<div class="product-card">
-    <img src="Castle.jpg" alt="Castle">
-    <p>Castle | Size: Kid XS | $0.50</p>
-  </div>
-
+<div id="product-list">
+  <!-- Product cards will be inserted here -->
 </div>
+
+<button onclick="goToCheckout()" style="margin: 40px auto; display: block;">
+  Checkout
+</button>
+
+<script>
+  const products = [
+    { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Small | $0.50" },
+    { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Medium | $0.50" },
+    { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult Small | $0.50" },
+    { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult XL | $0.75" },
+    { image: "Citrus.jpg", alt: "Citrus", description: "Citrus | Size: Kid XS | $0.50" },
+    { image: "Watermelon.jpg", alt: "Watermelon", description: "Watermelon | Size: Kid XS | $0.50" },
+    { image: "Watermelon.jpg", alt: "Watermelon", description: "Watermelon | Size: Kid Small | $0.50" },
+    { image: "Blueser.jpg", alt: "Blueser", description: "Blueser | Size: Adult Small | $0.50" },
+    { image: "LadyBug.jpg", alt: "LadyBug", description: "LadyBug | Size: Kid Large | $0.50" },
+    { image: "Flower.jpg", alt: "Flower", description: "Flower | Size: Kid XS | $0.50" },
+    { image: "Spooky.jpg", alt: "Spooky", description: "Spooky | Size: Kid Small | $0.50" },
+    { image: "Thunder and Lightning.jpg", alt: "Thunder and Lightning", description: "Thunder & Lightning | Size: Adult SM | $0.50" },
+    { image: "Carnival.jpg", alt: "Carnival", description: "Carnival | Size: Kid Small | $0.50" },
+    { image: "Green Thunder.jpg", alt: "Green Thunder", description: "Green Thunder | Size: Kid Medium | $0.50" },
+    { image: "French.jpg", alt: "French", description: "French | Size: Kid XS | $0.50" },
+    { image: "blue punch.jpg", alt: "Blue Punch", description: "Blue Punch | Size: Kid Small | $0.50" },
+    { image: "fighter.jpg", alt: "Fighter", description: "Fighter | Size: Kid XS | $0.75" },
+    { image: "sunset.jpg", alt: "Sunset", description: "Sunset | Size: Adult Large | $0.75" },
+    { image: "Tropical Fish.jpg", alt: "Tropical Fish", description: "Tropical Fish | Size: Kid XS | $0.50" },
+    { image: "Scary Pumpkin.jpg", alt: "Scary Pumpkin", description: "Scary Pumpkin | Size: Kid Large | $0.50" },
+    { image: "Valentine.jpg", alt: "Valentine", description: "Valentine | Size: Kid Small | $0.50" },
+    { image: "Valentine.jpg", alt: "Valentine", description: "Valentine | Size: Adult Small | $0.50" },
+    { image: "Viking.jpg", alt: "Viking", description: "Viking | Size: Kid Medium | $0.50" },
+    { image: "Easter.jpg", alt: "Easter", description: "Easter | Size: Kid Medium | $0.50" },
+    { image: "Red Hot.jpg", alt: "Red Hot", description: "Red Hot | Size: Kid Medium | $0.50" },
+    { image: "Raddish.jpg", alt: "Raddish", description: "Raddish | Size: Kid Small | $0.50" },
+    { image: "Spring.jpg", alt: "Spring", description: "Spring | Size: Kid Large | $0.50" },
+    { image: "Mario.jpg", alt: "Mario", description: "Mario | Size: Kid Large | $0.50" },
+    { image: "Blue Tiger.jpg", alt: "Blue Tiger", description: "Blue Tiger | Size: Kid Large | $0.50" },
+    { image: "Race Car.jpg", alt: "Race Car", description: "Race Car | Size: Kid Large | $0.50" },
+    { image: "Princess.jpg", alt: "Princess", description: "Princess | Size: Kid Medium | $0.50" },
+    { image: "Orange.jpg", alt: "Orange", description: "Orange | Size: Kid Medium | $0.50" },
+    { image: "Blue All Around.jpg", alt: "Blue All Around", description: "Blue All Around | Size: Adult Small | $0.50" },
+    { image: "Chili Pepper.jpg", alt: "Chili Pepper", description: "Chili Pepper | Size: Kid Small | $0.50" },
+    { image: "Sunrise.jpg", alt: "Sunrise", description: "Sunrise | Size: Kid Medium | $0.50" },
+    { image: "Jet.jpg", alt: "Jet", description: "Jet | Size: Kid Medium | $0.50" },
+    { image: "Pink Tiger.jpg", alt: "Pink Tiger", description: "Pink Tiger | Size: Kid Large | $0.50" },
+    { image: "Neon.jpg", alt: "Neon", description: "Neon | Size: Kid Large | $0.50" },
+    { image: "Electric.jpg", alt: "Electric", description: "Electric | Size: Kid small | $0.50" },
+    { image: "Azalea.jpg", alt: "Azalea", description: "Azalea | Size: Kid XS | $0.50" },
+    { image: "Cool Runner.jpg", alt: "Cool Runner", description: "Cool Runner | Size: Kid XS | $0.50" },
+    { image: "Scarecrow.jpg", alt: "Scarecrow", description: "Scarecrow | Size: Kid XS | $0.50" },
+    { image: "Castle.jpg", alt: "Castle", description: "Castle | Size: Kid XS | $0.50" }
+  ];
+
+  const cart = [];
+
+  const productList = document.getElementById('product-list');
+  products.forEach((product, index) => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.alt}">
+      <p>${product.description}</p>
+      <button class="add-to-cart-btn" onclick="addToCart('${product.description}', this)">Add to Cart</button>
+    `;
+    productList.appendChild(card);
+  });
+
+  function addToCart(description, button) {
+    if (!cart.includes(description)) {
+      cart.push(description);
+      button.textContent = 'In Cart';
+      button.classList.add('in-cart');
+      button.disabled = true;
+      alert('Added to cart!');
+      console.log(cart);
+    }
+  }
+</script> 
+
+<script>
+  function goToCheckout() {
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
+
+    // Save cart to localStorage
+    localStorage.setItem("braceletCart", JSON.stringify(cart));
+
+    // Redirect to the order form page
+    window.location.href = "Order Form.html";
+  }
+</script>
 
 </body>
 </html>

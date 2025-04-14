@@ -1,12 +1,3 @@
-<!--Item Ordered
-Quantity
-First Name
-Last Name
-Pickup Location
-Pickup Date
-Email for confirmation
-Phone number in case we have any questions
--->
 <!DOCTYPE html>
 <html>
 <body>
@@ -54,16 +45,10 @@ Phone number in case we have any questions
 </form>
 
 <script>
-  const params = new URLSearchParams(window.location.search);
+  const cart = JSON.parse(localStorage.getItem("braceletCart")) || [];
 
-  document.addEventListener("DOMContentLoaded", () => {
-    if (params.has('Item')) {
-      document.querySelector('[name="Item"]').value = params.get('Item');
-    }
-    if (params.has('Size')) {
-      document.querySelector('[name="Size"]').value = params.get('Size');
-    }
-  });
+  console.log("Cart from previous page:", cart);
+  // You can now loop through this array and show the order summary or build a form with this data
 </script>
 
 </body>
