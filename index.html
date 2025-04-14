@@ -82,7 +82,7 @@
   border-bottom: 1px solid #ccc;
 }
 
-#checkoutButton,
+#checkoutbutton,
 #clearCartButton {
   padding: 8px 16px;
   font-size: 16px;
@@ -99,7 +99,7 @@
 <h2><i>A business brought to you by Owen and Freddie</i></h2>
 <h2>Bracelets for Sale!</h2>
 <div class="checkout-bar">
-  <button id="checkoutButton">Checkout</button>
+  <button id="checkoutbutton">Checkout</button>
   <button id="clearCartButton">Clear Cart</button>
 </div>
 
@@ -109,7 +109,7 @@
   <!-- Product cards will be inserted here -->
 </div>
 
-<button id="checkoutButton" onclick="goToCheckout()" style="margin: 40px auto; display: block;">
+<button onclick="goToCheckout()" style="margin: 40px auto; display: block;">
   Checkout
 </button>
 <button id="clearCartButton">Clear Cart</button>
@@ -202,9 +202,7 @@ function goToCheckout() {
     // Redirect to the order form page
     window.open('Order Form.html', '_blank');
   }
-</script>
 
-<script>
 document.getElementById('clearCartButton').addEventListener('click', () => {
   localStorage.removeItem('cart');
   cart = [];
