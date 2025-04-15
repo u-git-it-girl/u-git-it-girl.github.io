@@ -71,10 +71,13 @@
       align-items: center;
       z-index: 1000;
       border-bottom: 1px solid #ccc;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     #checkoutbutton,
-    #clearCartButton {
+    #clearCartButton,
+    #clearFilterButton {
       padding: 10px 20px;
       font-size: 16px;
       background-color: #0039ff;
@@ -82,6 +85,14 @@
       border: none;
       cursor: pointer;
       border-radius: 8px;
+      margin: 5px;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
       margin: 5px;
     }
 
@@ -98,8 +109,29 @@
 <h2><i>A business brought to you by Owen and Freddie</i></h2>
 <h2>Bracelets for Sale!</h2>
 <div class="checkout-bar">
-  <button id="checkoutbutton" onclick="goToCheckout()">Checkout</button>
-  <button id="clearCartButton">Clear Cart</button>
+  <div>
+    <select id="sizeFilter" onchange="applyFilters()">
+      <option value="all">Filter by Size</option>
+      <option value="Kid XS">Kid XS</option>
+      <option value="Kid Small">Kid Small</option>
+      <option value="Kid Medium">Kid Medium</option>
+      <option value="Kid Large">Kid Large</option>
+      <option value="Adult Small">Adult Small</option>
+      <option value="Adult Medium">Adult Medium</option>
+      <option value="Adult Large">Adult Large</option>
+      <option value="Adult XL">Adult XL</option>
+    </select>
+    <select id="priceFilter" onchange="applyFilters()">
+      <option value="all">Filter by Price</option>
+      <option value="0.50">$0.50</option>
+      <option value="0.75">$0.75</option>
+    </select>
+    <button id="clearFilterButton" onclick="clearFilters()">Clear Filters</button>
+  </div>
+  <div>
+    <button id="checkoutbutton" onclick="goToCheckout()">Checkout</button>
+    <button id="clearCartButton">Clear Cart</button>
+  </div>
 </div>
 
 <div class="product-grid-wrapper">
@@ -117,23 +149,30 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const productList = document.getElementById('product-list');
 
-allProducts.forEach((product, index) => {
-  const card = document.createElement('div');
-  card.className = 'product-card';
+function renderProducts(size = 'all', price = 'all') {
+  productList.innerHTML = '';
+  allProducts.forEach((product) => {
+    const matchesSize = size === 'all' || product.description.includes(`Size: ${size}`);
+    const matchesPrice = price === 'all' || product.description.includes(`$${price}`);
+    if (!matchesSize || !matchesPrice) return;
 
-  const inCart = cart.includes(product.description);
-  const btnClass = inCart ? 'add-to-cart-btn in-cart' : 'add-to-cart-btn';
-  const btnText = inCart ? 'In Cart' : 'Add to Cart';
-  const btnDisabled = inCart ? 'disabled' : '';
+    const card = document.createElement('div');
+    card.className = 'product-card';
 
-  card.innerHTML = `
-    <img src="${product.image}" alt="${product.alt}">
-    <p>${product.description}</p>
-    <button class="${btnClass}" ${btnDisabled} onclick="addToCart('${product.description}', this)">${btnText}</button>
-  `;
+    const inCart = cart.includes(product.description);
+    const btnClass = inCart ? 'add-to-cart-btn in-cart' : 'add-to-cart-btn';
+    const btnText = inCart ? 'In Cart' : 'Add to Cart';
+    const btnDisabled = inCart ? 'disabled' : '';
 
-  productList.appendChild(card);
-});
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.alt}">
+      <p>${product.description}</p>
+      <button class="${btnClass}" ${btnDisabled} onclick="addToCart('${product.description}', this)">${btnText}</button>
+    `;
+
+    productList.appendChild(card);
+  });
+}
 
 function addToCart(description, button) {
   if (!cart.includes(description)) {
@@ -146,6 +185,20 @@ function addToCart(description, button) {
     console.log(cart);
   }
 }
+
+function applyFilters() {
+  const size = document.getElementById('sizeFilter').value;
+  const price = document.getElementById('priceFilter').value;
+  renderProducts(size, price);
+}
+
+function clearFilters() {
+  document.getElementById('sizeFilter').value = 'all';
+  document.getElementById('priceFilter').value = 'all';
+  renderProducts();
+}
+
+renderProducts();
 </script>
 
 <script>
