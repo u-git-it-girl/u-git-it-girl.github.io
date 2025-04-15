@@ -102,17 +102,9 @@
     <input type="hidden" name="order_summary" id="order-summary-field">
 
 </form>
-
+<script src="products.js"></script>
+    /* allProducts is now loaded from products.js */
   <script>
-    const allProducts = [
-      { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Small | $0.50" },
-      { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Medium | $0.50" },
-      { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult Small | $0.50" },
-      { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult XL | $0.75" },
-      { image: "Citrus.jpg", alt: "Citrus", description: "Citrus | Size: Kid XS | $0.50" }
-      // (Add remaining products here as needed)
-    ];
-
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const container = document.getElementById('order-list');
     let grandTotal = 0;
