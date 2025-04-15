@@ -42,4 +42,5 @@ const allProducts = [
   { image: "Cool Runner.jpg", alt: "Cool Runner", description: "Cool Runner | Size: Kid XS | $0.50" },
   { image: "Scarecrow.jpg", alt: "Scarecrow", description: "Scarecrow | Size: Kid XS | $0.50" },
   { image: "Castle.jpg", alt: "Castle", description: "Castle | Size: Kid XS | $0.50" }
+{ image: "Lime.jpg", alt: "Lime", description: "Lime | Size: Kid XS | $0.50" }
 ];
