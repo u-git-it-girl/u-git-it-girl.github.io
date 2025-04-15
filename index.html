@@ -79,70 +79,65 @@
 #clearCartButton,
 #clearFilterButton,
   select {
+  background-color: #0039ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+ 
+@media (max-width: 768px) {
+  .checkout-bar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .checkout-bar > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 480px;
+  }
+  #checkoutbutton,
+  #clearCartButton,
+  #clearFilterButton,
+  select {
+    flex: 1 1 45%;
+    max-width: 45%;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .checkout-bar {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .checkout-bar > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #checkoutbutton,
+  #clearCartButton,
+  #clearFilterButton,
+  select {
     flex: 1 1 48%;
     max-width: 48%;
     font-size: 14px;
     margin: 4px;
   }
 }
-  .checkout-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .checkout-bar > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-  }
-  #checkoutbutton,
-  #clearCartButton,
-  #clearFilterButton,
-  select {
-    flex: 1 1 45%;
-    max-width: 45%;
-  }
-}
-
-@media (max-width: 480px) {
-  .checkout-bar > div {
-    flex-direction: column;
-    align-items: center;
-  }
-  #checkoutbutton,
-  #clearCartButton,
-  #clearFilterButton,
-  select {
-    max-width: 90%;
-    flex: 1 1 90%;
-    font-size: 14px;
-  }
-  .checkout-bar {
-    padding: 8px;
-    gap: 6px;
-  }
-}
-  .checkout-bar {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .checkout-bar > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-  }
-  #checkoutbutton,
-  #clearCartButton,
-  #clearFilterButton,
-  select {
-    flex: 1 1 45%;
-    max-width: 45%;
-  }
-}
-    }
   </style>
 </head>
 <body>
