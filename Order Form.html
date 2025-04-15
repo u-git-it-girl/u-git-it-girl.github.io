@@ -78,7 +78,7 @@
   <div id="order-list"></div>
   <div id="grand-total">Grand Total: $0.00</div>
 
-  <div class="form-section">
+  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section">
     <h2>Pickup Info</h2>
     <label>Your Name*:
       <input type="text" name="name" required>
@@ -97,6 +97,11 @@
     <p style="color: red;"> Please have payment ready with exact change at the time of pickup! </p>
     <button class="submit-button">Submit Order</button>
   </div>
+
+<!-- Hidden input for cart summary -->
+    <input type="hidden" name="order_summary" id="order-summary-field">
+
+</form>
 
   <script>
     const allProducts = [
@@ -164,6 +169,24 @@
       });
       document.getElementById('grand-total').textContent = `Grand Total: $${grand.toFixed(2)}`;
     }
+function updateSummary() {
+      const items = document.querySelectorAll('.order-item');
+      let summary = '';
+      items.forEach(item => {
+        const name = item.querySelector('p:nth-child(1)').textContent.replace('Item: ', '');
+        const size = item.querySelector('p:nth-child(2)').textContent.replace('Size: ', '');
+        const price = item.querySelector('p:nth-child(3)').textContent.replace('Price: ', '');
+        const quantity = item.querySelector('input[type="number"]').value;
+        const total = item.querySelector('.total').textContent.replace('Total: ', '');
+        summary += `${name} | Size: ${size} | ${price} | Qty: ${quantity} | ${total}\n`;
+      });
+      const grand = document.getElementById('grand-total').textContent;
+      summary += `\n${grand}`;
+      orderSummaryField.value = summary;
+    }
+function clearCartAfterSubmit() {
+    localStorage.removeItem('cart');
+  }
   </script>
 </body>
 </html>
