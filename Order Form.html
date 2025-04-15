@@ -106,6 +106,7 @@
   <script>
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const container = document.getElementById('order-list');
+    const orderSummaryField = document.getElementById('order-summary-field');
     let grandTotal = 0;
 
     cart.forEach(description => {
