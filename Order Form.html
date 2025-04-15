@@ -78,7 +78,7 @@
   <div id="order-list"></div>
   <div id="grand-total">Grand Total: $0.00</div>
 
-  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section">
+  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section" onsubmit="updateSummary(); clearCartAfterSubmit()">
     <h2>Pickup Info</h2>
     <label>Your Name*:
       <input type="text" name="name" required>
@@ -103,7 +103,7 @@
 
 </form>
 <script src="products.js"></script>
-    /* allProducts is now loaded from products.js */
+    
   <script>
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const container = document.getElementById('order-list');
@@ -161,6 +161,7 @@
       });
       document.getElementById('grand-total').textContent = `Grand Total: $${grand.toFixed(2)}`;
     }
+
 function updateSummary() {
       const items = document.querySelectorAll('.order-item');
       let summary = '';
