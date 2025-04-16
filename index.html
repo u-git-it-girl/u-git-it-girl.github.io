@@ -301,6 +301,31 @@ document.getElementById('clearCartButton').addEventListener('click', () => {
 });
   
 </script>
+<script>
+  if (window.innerWidth <= 480) {
+    const mobileClearCart = document.getElementById('mobile-clear-cart');
+    const clearButton = document.createElement('button');
+    clearButton.textContent = 'Clear Cart';
+    clearButton.style.padding = '10px 20px';
+    clearButton.style.fontSize = '16px';
+    clearButton.style.backgroundColor = '#0039ff';
+    clearButton.style.color = 'white';
+    clearButton.style.border = 'none';
+    clearButton.style.borderRadius = '8px';
+    clearButton.style.cursor = 'pointer';
+    clearButton.style.margin = '10px auto';
+    clearButton.style.display = 'block';
+
+    clearButton.addEventListener('click', () => {
+      localStorage.removeItem('cart');
+      cart = [];
+      alert('Cart cleared!');
+      location.reload();
+    });
+
+    mobileClearCart.appendChild(clearButton);
+  }
+</script>
 
 </body>
 </html>
