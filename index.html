@@ -189,6 +189,23 @@
 
 <script src="products.js"></script>
 <script>
+function adjustMobileFilterLabels() {
+  if (window.innerWidth <= 480) {
+    const sizeFilter = document.getElementById('sizeFilter');
+    const priceFilter = document.getElementById('priceFilter');
+    if (sizeFilter && sizeFilter.options[0].text !== 'Size') {
+      sizeFilter.options[0].text = 'Size';
+    }
+    if (priceFilter && priceFilter.options[0].text !== 'Price') {
+      priceFilter.options[0].text = 'Price';
+    }
+  }
+}
+
+window.addEventListener('DOMContentLoaded', adjustMobileFilterLabels);
+window.addEventListener('resize', adjustMobileFilterLabels);
+</script>
+<script>
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 const productList = document.getElementById('product-list');
 
