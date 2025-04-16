@@ -2,7 +2,7 @@ const allProducts = [
   { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Small | $1.00" },
   { image: "Bracelet Rainbow AS.jpg", alt: "Rainbow", description: "Rainbow | Size: Adult Medium | $1.00" },
   { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult Small | $1.00" },
-  { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult XL | $1.00" },
+  { image: "Tropical Punch AS.jpg", alt: "Tropical Punch", description: "Tropical Punch | Size: Adult XXL | $1.00" },
   { image: "Citrus.jpg", alt: "Citrus", description: "Citrus | Size: Kid XS | $0.50" },
   { image: "Watermelon.jpg", alt: "Watermelon", description: "Watermelon | Size: Kid XS | $0.50" },
   { image: "Watermelon.jpg", alt: "Watermelon", description: "Watermelon | Size: Kid Small | $0.50" },
