@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Order Form</title>
   <style>
@@ -61,7 +61,7 @@
       font-weight: bold;
       margin-top: 20px;
     }
-    .submit-button {
+    .submit-button, .stripe-button {
       margin-top: 20px;
       padding: 10px 20px;
       font-size: 16px;
@@ -71,12 +71,47 @@
       border-radius: 5px;
       cursor: pointer;
     }
+    #shipping-fields, #card-payment-option {
+      display: none;
+    }
   </style>
 </head>
 <body>
   <h1>Your Order</h1>
   <div id="order-list"></div>
   <div id="grand-total">Grand Total: $0.00</div>
+
+  <div class="form-section">
+    <h2>Delivery Method</h2>
+    <label>
+      <input type="radio" name="delivery" value="pickup" checked onchange="handleDeliveryChange()"> Pickup
+    </label>
+    <label>
+      <input type="radio" name="delivery" value="shipping" onchange="handleDeliveryChange()"> Shipping
+    </label>
+
+    <div id="payment-choice">
+      <h3>How would you like to pay?</h3>
+      <label>
+        <input type="radio" name="payment" value="pickup" checked> Pay at Pickup
+      </label>
+      <label>
+        <input type="radio" name="payment" value="card"> Pay with Credit Card (via Stripe)
+      </label>
+    </div>
+
+    <div id="shipping-fields">
+      <h3>Shipping Details</h3>
+      <label>Email*:
+        <input type="email" id="shipping-email" required>
+      </label>
+      <label>Shipping Address*:
+        <input type="text" id="shipping-address" required>
+      </label>
+    </div>
+
+    <button class="stripe-button" onclick="payWithStripe()" id="card-payment-option">Pay Now</button>
+  </div>
 
   <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section" onsubmit="updateSummary(); clearCartAfterSubmit()">
     <h2>Pickup Info</h2>
@@ -91,18 +126,16 @@
     </label>
     <label>Desired Pickup Time*:
       <input type="text" name="pickup-time" required placeholder="Example: Tuesday after school">
+    </label>
     <label>Questions/Comments:
       <textarea name="comments" rows="4"></textarea>
     </label>
     <p style="color: red;"> Please have payment ready with exact change at the time of pickup! </p>
     <button class="submit-button">Submit Order</button>
-
-<!-- Hidden input for cart summary -->
     <input type="hidden" name="order_summary" id="order-summary-field">
+  </form>
 
-</form>
-<script src="products.js"></script>
-    
+  <script src="products.js"></script>
   <script>
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const container = document.getElementById('order-list');
@@ -127,7 +160,7 @@
           <p><strong>Size:</strong> ${sizeMatch ? sizeMatch[1] : 'Unknown'}</p>
           <p><strong>Price:</strong> $${price.toFixed(2)}</p>
           <p>
-            <label>Quantity: 
+            <label>Quantity:
               <input type="number" value="1" min="1" onchange="updateTotal(this, ${price})">
             </label>
             <label> Comments:
@@ -162,7 +195,7 @@
       document.getElementById('grand-total').textContent = `Grand Total: $${grand.toFixed(2)}`;
     }
 
-function updateSummary() {
+    function updateSummary() {
       const items = document.querySelectorAll('.order-item');
       let summary = '';
       items.forEach(item => {
@@ -177,9 +210,61 @@ function updateSummary() {
       summary += `\n${grand}`;
       orderSummaryField.value = summary;
     }
-function clearCartAfterSubmit() {
-    localStorage.removeItem('cart');
-  }
+
+    function clearCartAfterSubmit() {
+      localStorage.removeItem('cart');
+    }
+
+    function handleDeliveryChange() {
+      const delivery = document.querySelector('input[name="delivery"]:checked').value;
+      const shippingFields = document.getElementById('shipping-fields');
+      const paymentOptions = document.getElementById('payment-choice');
+      const stripeBtn = document.getElementById('card-payment-option');
+
+      if (delivery === 'pickup') {
+        shippingFields.style.display = 'none';
+        paymentOptions.style.display = 'block';
+        const payWithCard = document.querySelector('input[name="payment"][value="card"]').checked;
+        stripeBtn.style.display = payWithCard ? 'block' : 'none';
+      } else {
+        shippingFields.style.display = 'block';
+        paymentOptions.style.display = 'none';
+        stripeBtn.style.display = 'block';
+      }
+    }
+
+    document.querySelectorAll('input[name="payment"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const payWithCard = document.querySelector('input[name="payment"][value="card"]').checked;
+        document.getElementById('card-payment-option').style.display = payWithCard ? 'block' : 'none';
+      });
+    });
+
+    async function payWithStripe() {
+      const delivery = document.querySelector('input[name="delivery"]:checked').value;
+      const totalText = document.getElementById('grand-total').textContent;
+      const totalAmount = parseFloat(totalText.replace('Grand Total: $', ''));
+      const shipping = delivery === 'shipping';
+      const email = shipping ? document.getElementById('shipping-email').value : '';
+
+      try {
+        const res = await fetch('/.netlify/functions/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ total: totalAmount, shipping, email })
+        });
+
+        const data = await res.json();
+        if (data.url) {
+          window.location.href = data.url;
+        } else {
+          alert('There was an issue creating the payment session.');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('Payment failed.');
+      }
+    }
   </script>
 </body>
 </html>
