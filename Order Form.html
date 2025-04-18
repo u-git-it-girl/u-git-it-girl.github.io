@@ -128,7 +128,7 @@
     <button class="stripe-button" onclick="payWithStripe()" id="card-payment-option">Pay Now</button>
   </div>
 
-  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section" onsubmit="updateSummary(); clearCartAfterSubmit()">
+  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section" id="pickup-info" onsubmit="updateSummary(); clearCartAfterSubmit()">
     <h2>Pickup Info</h2>
     <label>Your Name*:
       <input type="text" name="name" required>
@@ -235,13 +235,20 @@
       const shippingFields = document.getElementById('shipping-fields');
       const paymentOptions = document.getElementById('payment-choice');
       const stripeBtn = document.getElementById('card-payment-option');
+      const pickupInfo = document.getElementById('pickup-info');
 
       if (delivery === 'pickup') {
+        pickupInfo.style.display = 'block';
+        shippingFields.style.display = 'none';
+        pickupInfo.style.display = 'block';
         shippingFields.style.display = 'none';
         paymentOptions.style.display = 'block';
         const payWithCard = document.querySelector('input[name="payment"][value="card"]').checked;
         stripeBtn.style.display = payWithCard ? 'block' : 'none';
       } else {
+        pickupInfo.style.display = 'none';
+        shippingFields.style.display = 'block';
+        pickupInfo.style.display = 'none';
         shippingFields.style.display = 'block';
         paymentOptions.style.display = 'none';
         stripeBtn.style.display = 'block';
@@ -256,13 +263,28 @@
     });
 
     async function payWithStripe() {
-      const delivery = document.querySelector('input[name="delivery"]:checked').value;
-      const totalText = document.getElementById('grand-total').textContent;
-      const totalAmount = parseFloat(totalText.replace('Grand Total: $', ''));
-      const shipping = delivery === 'shipping';
-      const email = shipping ? document.getElementById('shipping-email').value : '';
+  const delivery = document.querySelector('input[name="delivery"]:checked').value;
+  const totalText = document.getElementById('grand-total').textContent;
+  const totalAmount = parseFloat(totalText.replace('Grand Total: $', ''));
+  const shipping = delivery === 'shipping';
+  const email = shipping ? document.getElementById('shipping-email').value : '';
 
-      try {
+  // Validate required shipping fields if shipping is selected
+  if (shipping) {
+    const requiredFields = [
+      'shipping-email', 'shipping-name', 'shipping-street', 'shipping-city', 'shipping-state', 'shipping-zip'
+    ];
+    for (const id of requiredFields) {
+      const field = document.getElementById(id);
+      if (!field.value.trim()) {
+        alert('Please fill out all required shipping fields.');
+        field.focus();
+        return;
+      }
+    }
+  }
+
+  try {
         const res = await fetch('/.netlify/functions/create-checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
