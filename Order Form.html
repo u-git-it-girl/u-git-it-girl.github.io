@@ -125,10 +125,10 @@
   </label>
 </div>
 
-    <button class="stripe-button" onclick="payWithStripe()" id="card-payment-option">Pay Now</button>
+    <button class="stripe-button" onclick="payWithStripe()" id="card-payment-option" style="display:none">Pay Now</button>
   </div>
 
-  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section" id="pickup-info" onsubmit="updateSummary(); clearCartAfterSubmit()">
+  <form action="https://formspree.io/f/mgvadyan" method="POST" class="form-section" id="pickup-info" onsubmit="updateSummary(); clearCartAfterSubmit(); return handlePickupSubmit(event);">
     <h2>Pickup Info</h2>
     <label>Your Name*:
       <input type="text" name="name" required>
@@ -146,11 +146,23 @@
       <textarea name="comments" rows="4"></textarea>
     </label>
     <p style="color: red;"> Please have payment ready with exact change at the time of pickup! </p>
-    <button class="submit-button">Submit Order</button>
+    <button class="submit-button" id="pickup-submit-button">Submit Order</button>
     <input type="hidden" name="order_summary" id="order-summary-field">
   </form>
 
-  <script src="products.js"></script>
+  <script src="products.js">function handlePickupSubmit(event) {
+  const delivery = document.querySelector('input[name="delivery"]:checked').value;
+  const payment = document.querySelector('input[name="payment"]:checked').value;
+  if (delivery === 'pickup' && payment === 'card') {
+    event.preventDefault();
+    updateSummary();
+    clearCartAfterSubmit();
+    payWithStripe();
+    return false;
+  }
+  return true;
+}
+</script>
   <script>
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const container = document.getElementById('order-list');
