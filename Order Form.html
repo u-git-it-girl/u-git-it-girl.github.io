@@ -101,14 +101,29 @@
     </div>
 
     <div id="shipping-fields">
-      <h3>Shipping Details</h3>
-      <label>Email*:
-        <input type="email" id="shipping-email" required>
-      </label>
-      <label>Shipping Address*:
-        <input type="text" id="shipping-address" required>
-      </label>
-    </div>
+  <h3>Shipping Details</h3>
+  <label>Email*:
+    <input type="email" id="shipping-email" required>
+  </label>
+  <label>Name*:
+    <input type="text" id="shipping-name" required>
+  </label>
+  <label>Street Address*:
+    <input type="text" id="shipping-street" required>
+  </label>
+  <label>Address Line 2:
+    <input type="text" id="shipping-line2">
+  </label>
+  <label>City*:
+    <input type="text" id="shipping-city" required>
+  </label>
+  <label>State*:
+    <input type="text" id="shipping-state" required>
+  </label>
+  <label>Zip Code*:
+    <input type="text" id="shipping-zip" required>
+  </label>
+</div>
 
     <button class="stripe-button" onclick="payWithStripe()" id="card-payment-option">Pay Now</button>
   </div>
