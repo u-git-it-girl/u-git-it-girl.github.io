@@ -48,7 +48,7 @@ const allProducts = [
   { image: "Smoke.jpg", alt: "Smoke", description: "Smoke | Size: Kid Large | $0.50" },
   { image: "Speeder.jpg", alt: "Speeder", description: "Speeder | Size: Adult Xlarge | $1.00" },
   { image: "Christmas.jpg", alt: "Christmas", description: "Christmas | Size: Adult Medium  | $1.00" },
-  { image: "Girl Power.jpg", alt: "Girl Power", description: "Girl Power" | Size: Kid Large | $0.50" },
+  { image: "Girl Power.jpg", alt: "Girl Power", description: "Girl Power | Size: Kid Large | $0.50" },
   { image: "Elephant.jpg", alt: "Elephant", description: "Elephant | Size: Kid Medium | $0.50" },
   { image: "Candy Shop.jpg", alt: "Candy Shop", description: "Candy Shop | Size: Kid Medium | $0.50" },
   { image: "LSU Tigers.jpg", alt: "LSU Tigers", description: "LSU Tigers | Size: Adult Small | $1.00" },
