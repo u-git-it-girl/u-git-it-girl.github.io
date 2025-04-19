@@ -43,5 +43,8 @@ const allProducts = [
   { image: "Scarecrow.jpg", alt: "Scarecrow", description: "Scarecrow | Size: Kid XS | $0.50" },
   { image: "Castle.jpg", alt: "Castle", description: "Castle | Size: Kid XS | $0.50" },
   { image: "Lime.jpg", alt: "Lime", description: "Lime | Size: Adult Xlarge | $1.00" },
-  { image: "Smoke.jpg", alt: "Smoke", description: "Smoke | Size: Adult Xlarge | $1.00" }
+  { image: "Bush.jpg", alt: "Bush", description: "Bush | Size: Kid Large | $0.50" },
+  { image: "Smoke.jpg", alt: "Smoke", description: "Smoke | Size: Adult Xlarge | $1.00" },
+  { image: "Smoke.jpg", alt: "Smoke", description: "Smoke | Size: Kid Large | $0.50" },
+  { image: "Speeder.jpg", alt: "Speeder", description: "Speeder | Size: Adult Xlarge | $1.00" }
 ];
