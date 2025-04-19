@@ -56,7 +56,7 @@
       border-radius: 4px;
       border: 1px solid #ccc;
     }
-    #grand-total {
+    #item-total {
       font-size: 18px;
       font-weight: bold;
       margin-top: 20px;
@@ -79,7 +79,7 @@
 <body>
   <h1>Your Order</h1>
   <div id="order-list"></div>
-  <div id="grand-total">Grand Total: $0.00</div>
+  <div id="item-total">Item Total: $0.00</div>
 
   <div class="form-section">
     <h2>Delivery Method</h2>
@@ -219,7 +219,7 @@
         const value = parseFloat(el.textContent.replace('Total: $', ''));
         grand += value;
       });
-      document.getElementById('grand-total').textContent = `Grand Total: $${grand.toFixed(2)}`;
+      document.getElementById('item-total').textContent = `Item Total: $${grand.toFixed(2)}`;
     }
 
     function updateSummary() {
@@ -233,7 +233,7 @@
         const total = item.querySelector('.total').textContent.replace('Total: ', '');
         summary += `${name} | Size: ${size} | ${price} | Qty: ${quantity} | ${total}\n`;
       });
-      const grand = document.getElementById('grand-total').textContent;
+      const grand = document.getElementById('item-total').textContent;
       summary += `\n${grand}`;
       orderSummaryField.value = summary;
     }
@@ -276,7 +276,7 @@
 
     async function payWithStripe() {
   const delivery = document.querySelector('input[name="delivery"]:checked').value;
-  const totalText = document.getElementById('grand-total').textContent;
+  const totalText = document.getElementById('item-total').textContent;
   const totalAmount = parseFloat(totalText.replace('Grand Total: $', ''));
   const shipping = delivery === 'shipping';
   const email = shipping ? document.getElementById('shipping-email').value : '';
