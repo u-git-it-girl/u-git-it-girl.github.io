@@ -48,3 +48,4 @@ const allProducts = [
   { image: "Smoke.jpg", alt: "Smoke", description: "Smoke | Size: Kid Large | $0.50" },
   { image: "Speeder.jpg", alt: "Speeder", description: "Speeder | Size: Adult Xlarge | $1.00" }
   { image: "Christmas.jpg", alt: "Christmas", description: "Christmas | Size: Adult Medium  | $1.00" }
+];
